@@ -1,0 +1,45 @@
+<!-- _form.html.erb -->
+<div class="animate__animated animate__fadeIn">
+  <%= form_with(model: [deal, task], local: true, class: "space-y-6") do |form| %>
+    <% if task.errors.any? %>
+      <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6 animate__animated animate__shakeX">
+        <div class="flex items-center">
+          <i class="fas fa-exclamation-circle text-red-500 mr-3"></i>
+          <h3 class="font-bold"><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h3>
+        </div>
+        <ul class="mt-2 ml-8 list-disc text-sm space-y-1">
+          <% task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="space-y-2">
+      <%= form.label :title, class: "block text-sm font-medium text-gray-700 flex items-center" do %>
+        <i class="fas fa-heading text-indigo-500 mr-2"></i> Task Title
+      <% end %>
+      <%= form.text_field :title, class: "form-input block w-full rounded-lg p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500", placeholder: "Enter task title" %>
+    </div>
+
+    <div class="space-y-2">
+      <%= form.label :due_date, class: "block text-sm font-medium text-gray-700 flex items-center" do %>
+        <i class="fas fa-calendar-day text-indigo-500 mr-2"></i> Due Date
+      <% end %>
+      <%= form.date_field :due_date, class: "form-input block w-full rounded-lg p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    </div>
+
+    <div class="space-y-2">
+      <%= form.label :status, class: "block text-sm font-medium text-gray-700 flex items-center" do %>
+        <i class="fas fa-tasks text-indigo-500 mr-2"></i> Status
+      <% end %>
+      <%= form.select :status, Task.statuses.keys.map { |s| [s.titleize, s] }, {}, 
+          class: "form-select block w-full rounded-lg p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    </div>
+
+    <div class="pt-4">
+      <%= form.submit(task.new_record? ? "Create Task" : "Update Task", 
+            class: "w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500") %>
+    </div>
+  <% end %>
+</div>
