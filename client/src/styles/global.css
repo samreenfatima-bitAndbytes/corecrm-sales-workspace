@@ -1020,13 +1020,23 @@ textarea {
     display: grid;
   }
 
+  .login-hero__logo {
+    width: min(128px, 36vw);
+    margin-bottom: 0.15rem;
+  }
+
+  .login-hero h1 {
+    font-size: clamp(1.35rem, 5vw, 1.65rem);
+    margin: 0.55rem 0 0.35rem;
+  }
+
   .login-hero p,
   .login-hero__points {
     display: none;
   }
 
   .login-page {
-    padding: 2.4rem 0.95rem 1.5rem;
+    padding: 3.25rem 0.95rem 1.5rem;
     align-content: start;
   }
 
@@ -1079,5 +1089,9 @@ textarea {
 
   .demo-chips {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .login-hero__logo {
+    width: min(104px, 32vw);
   }
 }
