@@ -43,7 +43,17 @@ location.reload();
 
 ## Vercel
 
-Root `vercel.json` builds `client/` as a static SPA.
+Deploy the **static client only** (do not let Vercel build Rails/Docker).
+
+**Option A — root directory `client` (simplest in Vercel UI)**  
+- Root Directory: `client`  
+- Framework: Vite  
+- Build: `npm run build`  
+- Output: `dist`
+
+**Option B — repo root**  
+Root `vercel.json` already runs `cd client && npm ci && npm run build` and outputs `client/dist`.  
+Rails Docker file is named `Dockerfile.rails` so Vercel does not pick it up.
 
 ## Rails app (optional)
 

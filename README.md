@@ -28,4 +28,4 @@ See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for the full role matrix.
 
 ## Vercel
 
-Root `vercel.json` deploys the `client/` SPA.
+Deploy **`client/`** as Vite (Root Directory = `client`), or use repo-root `vercel.json` which builds `client/dist`. Do not use the Rails Dockerfile for Vercel.
