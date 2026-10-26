@@ -36,6 +36,14 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-# Static demo client
-/client/node_modules
-/client/dist
+# Node / static demo
+node_modules/
+/client/node_modules/
+/client/dist/
+
+# Junk / editor artifacts
+.byebug_history
+/10,
+/5,
+/default,
+/internal,
